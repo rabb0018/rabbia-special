@@ -69,7 +69,7 @@ get_header();
         }
 
         function visPodcasts() {
-            let temp = docuemnt.querySelector("template");
+            let temp = document.querySelector("template");
             let container = document.querySelector("#podcastcontainer")
             container.innerHTML = "";
             podcasts.forEach(podcast => {
