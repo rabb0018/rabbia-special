@@ -73,7 +73,7 @@ get_header();
             let container = document.querySelector("#podcastcontainer")
             container.innerHTML = "";
             podcasts.forEach(podcast => {
-                if (filerPodcast == "alle" || podcast.catergories.includes(parseInt(filterPodcast))) {
+                if (filterPodcast == "alle" || podcast.catergories.includes(parseInt(filterPodcast))) {
 
                     let klon = temp.cloneNode(true).content;
                     klon.querySelector("img").src = podcast.billede.guid;
