@@ -6,28 +6,97 @@ Template for displaying front page
 get_header();
 ?>
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main">
+<template>
+    <article>
+        <img src="" alt="">
+        <h2></h2>
+    </article>
+</template>
 
-			<?php
+<div id="primary" class="content-area">
+    <main id="main" class="site-main">
 
-			// Start the Loop.
-			while ( have_posts() ) :
-				the_post();
+        <section id="primary" class="content-area"></section>
+        <nav id="filtrering"><button data-podcasts="alle">Alle</button></nav>
 
-				get_template_part( 'template-parts/content/content', 'page' );
+        <section id="podcastcontainer"></section>
 
-				// If comments are open or we have at least one comment, load up the comment template.
-				if ( comments_open() || get_comments_number() ) {
-					comments_template();
-				}
+    </main><!-- #main -->
 
-			endwhile; // End the loop.
-			?>
+    <script>
+        let podcasts;
+        let categories;
+        let filterPodcast = "alle";
+        const dburl = "https://rys.dk/kea/09_cms/radio_loud/wp-json/wp/v2/podcast?per_page=100";
 
-		</main><!-- #main -->
-	</div><!-- #primary -->
+        const catUrl = "https://rys.dk/kea/09_cms/radio_loud/wp-json/wp/v2/categories";
+
+
+        async function getJson() {
+            const data = await fetch(dbUrl);
+            const catdata = await fetch(catUrl);
+            podcasts = await data.json();
+            categories = await catdata.json();
+            visPodcasts();
+            opretKnapper();
+
+        }
+
+
+        function opretKnapper() {
+
+            categories.forEach(cat => {
+                document.querySelector("#filtrering").innerHTML += `<button class="filter" data-podcast="${cat.id}">${cat.name}</button>`
+            })
+
+            addEventListenerToButtons();
+
+        }
+
+        function addEventListenerToButtons() {
+            document.querySelectorAll("#filtrering button").forEach(elm => {
+                elm.addEventListener("click", filtrering);
+            })
+        }
+
+        function filtrering() {
+            filterPodcast = this.dataset.podcast;
+            console.log(filterPodcast);
+
+            visPodcasts();
+
+
+        }
+
+        function visPodcasts() {
+            let temp = docuemnt.querySelector("template");
+            let container = document.querySelector("#podcastcontainer")
+            container.innerHTML = "";
+            podcasts.forEach(podcast => {
+                if (filerPodcast == "alle" || podcast.catergories.includes(parseInt(filterPodcast))) {
+
+                    let klon = temp.cloneNode(true).content;
+                    klon.querySelector("img").src = podcast.billede.guid;
+                    klon.querySelector("h2").innerHTML = podcast.title.rendered;
+
+                    klon.querySelector("article").addEventListener("click", () => {
+                        location.href = podcast.link;
+
+
+                    })
+                    container.appendChild(klon);
+                }
+            })
+
+        }
+
+        getJson();
+
+
+    </script>
+
+
+</div><!-- #primary -->
 
 <?php
 get_footer();
-
