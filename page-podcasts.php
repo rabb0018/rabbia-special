@@ -27,7 +27,7 @@ get_header();
         let podcasts;
         let categories;
         let filterPodcast = "alle";
-        const dburl = "https://rys.dk/kea/09_cms/radio_loud/wp-json/wp/v2/podcast?per_page=100";
+        const dbUrl = "https://rys.dk/kea/09_cms/radio_loud/wp-json/wp/v2/podcasts?per_page=100";
 
         const catUrl = "https://rys.dk/kea/09_cms/radio_loud/wp-json/wp/v2/categories";
 
