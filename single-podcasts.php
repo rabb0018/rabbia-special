@@ -62,7 +62,7 @@ get_header();
 
             const data2 = await fetch(afsnitterUrl);
             afsnitter = await data.json();
-            console.log("afsnitter: " afsnitter);
+            console.log("afsnitter: ", afsnitter);
 
 
             visPodcasts();
