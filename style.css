@@ -11,10 +11,8 @@ Discription: Stylish Child Theme based on Twenty Nineteen
 
 #podcastcontainer {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     max-width: 1000px;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    grid-gap: 1.5em;
     margin: auto;
 }
 
