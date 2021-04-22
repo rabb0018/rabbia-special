@@ -9,7 +9,7 @@ Discription: Stylish Child Theme based on Twenty Nineteen
 */
 
 
-#primary {
+#podcastcontainer {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     max-width: 1000px;
