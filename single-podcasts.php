@@ -61,7 +61,7 @@ get_header();
             podcast = await data.json();
 
             const data2 = await fetch(afsnitterUrl);
-            afsnitter = await data.json();
+            afsnitter = await data2.json();
             console.log("afsnitter: ", afsnitter);
 
 
