@@ -16,10 +16,9 @@ get_header();
     <main id="main" class="site-main">
 
         <article>
-            <img src="" alt="">
+            <img src="" alt="" class="podcast_billede">
             <h2></h2>
         </article>
-
 
         <section id="afsnitter">
             <template>
@@ -72,9 +71,10 @@ get_header();
 
         function visPodcasts(){
             console.log("visPodcasts");
-            console.log(podcast.title.rendered);
+            console.log("podcast.title.rendered :", podcast.title.rendered);
             document.querySelector("h2").innerHTML = podcast.title.rendered;
-            document.querySelector("img").src = podcast.billede.guid;
+            console.log("podcast.billede.guid :", podcast.billede.guid);
+            document.querySelector(".podcast_billede").src = podcast.billede.guid;
         }
 
 
@@ -99,7 +99,7 @@ get_header();
                         location.href = afsnitter.link;
                     })
 
-                    klon.querySelector("a").href = episode.link;
+                    klon.querySelector("a").href = afsnitter.link;
                     console.log("afsnitter", afsnitter.link);
                     container.appendChild(klon);
 
