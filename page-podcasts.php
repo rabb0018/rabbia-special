@@ -92,7 +92,6 @@ get_header();
 
         getJson();
 
-
     </script>
 
 

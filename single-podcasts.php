@@ -15,23 +15,31 @@ get_header();
 <div id="primary" class="content-area">
     <main id="main" class="site-main">
 
+
         <article>
-            <img src="" alt="" class="podcast_billede">
-            <h2></h2>
+            <div class="podcast_showcase">
+                <div class="podcast_billede">
+                    <img src="" alt="">
+                </div>
+                <div class="podcast_overskrift">
+                    <h2></h2>
+                </div>
+            </div>
         </article>
+
 
         <section id="afsnitter">
             <template>
-                <article>
-                    <div>
+                <article class="afsnitter_section">
+                    <div class="afsnitter_billede">
                         <img src="" alt="">
                     </div>
-                    <div>
+                    <div class="afsnitter_indhold">
                         <h2></h2>
                         <h3></h3>
                         <p class="afsnit_nr"></p>
-                        <p class="varighed"></p>
-                        <p class="dato"></p>
+                        <!--<p class="varighed"></p>
+                        <p class="dato"></p>-->
                         <a href="">Læs mere</a>
 
                     </div>
@@ -69,7 +77,7 @@ get_header();
 
         }
 
-        function visPodcasts(){
+        function visPodcasts() {
             console.log("visPodcasts");
             console.log("podcast.title.rendered :", podcast.title.rendered);
             document.querySelector("h2").innerHTML = podcast.title.rendered;
@@ -92,8 +100,8 @@ get_header();
 
                     klon.querySelector("h3").innerHTML = afsnitter.afsnit_navn;
                     klon.querySelector(".afsnit_nr").innerHTML = afsnitter.afsnit_nr;
-                    klon.querySelector(".varighed").innerHTML = afsnitter.varighed;
-                    klon.querySelector(".dato").innerHTML = afsnitter.dato;
+                   /* klon.querySelector(".varighed").innerHTML = afsnitter.varighed;
+                    klon.querySelector(".dato").innerHTML = afsnitter.dato;*/
 
                     klon.querySelector("article").addEventListener("click", () => {
                         location.href = afsnitter.link;
@@ -108,8 +116,6 @@ get_header();
         }
 
         getJson();
-
-
 
     </script>
 
